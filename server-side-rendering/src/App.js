@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Icon from "./icon.png";
 import Home from "./Home";
 import About from "./About";
 import styled from "styled-components";
@@ -30,6 +31,7 @@ const App = ({ pages }) => {
         About
       </button>
       <PageComponent />
+      <img src={Icon} />
     </Container>
   );
 };
