@@ -6,31 +6,36 @@ import React from "react";
 import App from "./App";
 import * as url from "url";
 import { ServerStyleSheet } from "styled-components";
+import { renderPage, prerenderPages } from "./common";
 
 const app = express();
-const html = fs.readFileSync(
-  path.resolve(__dirname, "../dist/index.html"),
-  "utf8"
-);
+
+const prerenderHtml = {};
+for (const page of prerenderPages) {
+  const pageHtml = fs.readFileSync(
+    path.resolve(__dirname, `../dist/${page}.html`),
+    "utf8"
+  );
+  prerenderHtml[page] = pageHtml;
+}
+
 app.use("/dist", express.static("dist"));
-app.get("/favicon.ico", (req, res) => res.sendStatus(201));
+app.get("/favicon.ico", (req, res) => res.sendStatus(204));
 app.get("*", (req, res) => {
   const parsedUrl = url.parse(req.url, true);
   const page = parsedUrl.pathname ? parsedUrl.pathname.substr(1) : "home";
 
-  const sheet = new ServerStyleSheet();
-
-  const renderString = renderToString(
-    sheet.collectStyles(<App pages={page} />)
-  );
-  const styles = sheet.getStyleTags();
   const initialData = { page }; // 클라이언트에게 전달할 초기 데이터
 
-  // 렌더링된 결과를 반영해서 HTML 완성함
-  const result = html
-    .replace('<div id="root"></div>', `<div id="root">${renderString}</div>`)
-    .replace("__DATA_FROM_SERVER__", JSON.stringify(initialData))
-    .replace("__STYLE_FROM_SERVER__", styles);
+  // 미리 렌더링된 페이지가 아닌 경우에만 새로 렌더링한다.
+  const pageHtml = prerenderPages.includes(page)
+    ? prerenderHtml[page]
+    : renderPage(page);
+  const result = pageHtml.replace(
+    "__DATA_FROM_SERVER__",
+    JSON.stringify(initialData)
+  );
+
   res.send(result);
 });
 app.listen(3000);
