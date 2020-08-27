@@ -21,9 +21,7 @@ const App = ({ pages }) => {
     window.onpopstate = (e) => {
       setPage(e.state);
     };
-  }, []);
 
-  useEffect(() => {
     fetchUsername().then((data) => setUsername(data));
   }, []);
 
