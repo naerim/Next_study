@@ -6,6 +6,7 @@ create-react-app은 클라이언트 렌더링만 하는 반면, 넥스트는 서
 - 넥스트에서 모든 페이지 컴포넌트는 pages 폴더 밑에 만들어야 한다.
 - 넥스트는 리액트 모듈을 자동으로 포함시켜 준다. (파일 상단에 import 키워드 X)
 - 넥스트는 create-react-app 과 달리 웹팩 설정을 변경할 수 있다.
+- 모든 페이지에서 공통으로 필요한 기능은 pages/_app.js 파일에서 구현할 수 있다.
 <br />
 
 ### `getInitialProps 함수`
@@ -16,3 +17,4 @@ Note
 ---
 powershell 에서는 rm -rf .next 가 안된다. <br />
 => Remove-Item -Recurse -Force .next
+=> $env:NODE_ENV="production"
