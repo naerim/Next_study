@@ -1,13 +1,11 @@
 import Head from "next/head";
 import Icon from "../static/icon.png";
-import Link from "next/link";
+import { add } from "../src/util";
 
 const Page1 = () => {
   return (
     <div>
-      <Link href="/page2">
-        <a>page2로 이동</a>
-      </Link>
+      <p>{`10 + 20 = ${add(10, 20)}`}</p>
       <p>This is home page</p>
       <img src={Icon} />
       <Head>

@@ -3,6 +3,8 @@ import { callApi } from "../src/api";
 
 // getInitialProps 함수 정의
 Page2.getInitialProps = async ({ query }) => {
+  // const { sayHello } = await import("../src/sayHello");
+  // console.log(sayHello());
   const text = query.text || "none";
   const data = await callApi();
   return { text, data };
