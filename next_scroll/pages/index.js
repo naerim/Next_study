@@ -5,9 +5,7 @@ import Link from "next/link";
 const ProfileLink = (props) => {
   return (
     <div>
-      <Link
-          as={`/p/${props.name}`}
-          href={`/profile?name=${props.name}`}>
+      <Link as={`/p/${props.name}`} href={`/profile?name=${props.name}`}>
         <a>Go to {props.name}'s profile</a>
       </Link>
     </div>
@@ -17,12 +15,17 @@ const ProfileLink = (props) => {
 const Index = () => {
   return (
     <Layout>
-      <p>Friends List</p>
+      <h1>Friends List</h1>
       <ProfileLink name="nick" />
       <ProfileLink name="judy" />
       <ProfileLink name="vivi" />
+      <h1>Show List</h1>
+      <Link href="/tvShow">
+        <a>Go to show list</a>
+      </Link>
     </Layout>
   );
 };
+
 
 export default Index;
