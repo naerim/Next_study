@@ -20,12 +20,15 @@ const Index = () => {
       <ProfileLink name="judy" />
       <ProfileLink name="vivi" />
       <h1>Show List</h1>
-      <Link href="/tvShow">
-        <a>Go to show list</a>
+      <Link href="/[pagename]" as="/batman">
+        <a>배트맨</a>
+      </Link>
+      <br />
+      <Link href="/[pagename]" as="/superman">
+        <a>슈퍼맨</a>
       </Link>
     </Layout>
   );
 };
-
 
 export default Index;
