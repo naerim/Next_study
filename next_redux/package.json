@@ -1,0 +1,27 @@
+{
+  "name": "next_redux",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "immer": "^7.0.9",
+    "next": "^9.5.3",
+    "next-redux-wrapper": "^6.0.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5"
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.8"
+  }
+}
