@@ -13,8 +13,28 @@ create-react-app은 클라이언트 렌더링만 하는 반면, 넥스트는 서
 => 서버에서 생성된 데이터를 전달하기 <br />
 넥스트에서는 getInitialProps 함수를 이용해서 페이지 컴포넌트로 속성 값을 전달한다.
 
-Note
+### Note
+
 ---
 powershell 에서는 rm -rf .next 가 안된다. <br />
 => Remove-Item -Recurse -Force .next
 => $env:NODE_ENV="production"
+<br/>
+<br/>
+
+
+### Server Side
+
+---
+next js가 React 프로젝트의 SSR을 가능하게 한다. 
+<br/>
+최초에 넥스트 서버로 요청이 들어왔을 때, 넥스트 서버에서는 요청이 들어온 페이지의 데이터를
+fetch하고 html을 구성하여 클라이언트로 보내준다.
+
+- _app과 _document는 최초로 실행된다.
+- 이 두 파일은 server only file이기 때문에 window/DOM 로직을 사용하면 안된다.
+- _document에 어플리케이션 로직을 넣지 말 것!
+- Next 9.3 버전에서는 getInitialProps 를 대신에 getStaticProps, getStaticPaths, getServerSideProps 를 사용하게 된다.
+- 각각 용법은 다르지만 페이지의 연산을 미리 한다는 점은 동일하다.
+- 공통된 Data Fetching이 필요하다면 _app.js에 getInitialProps를 붙이면 된다.
+- 페이지마다 다른 Data가 필요하다면 페이지마다 getInitialProps를 붙이면 된다.
