@@ -3,11 +3,9 @@ import React from "react";
 
 function App({ Component, pageProps }) {
   return (
-    <>
-      <div>
-        <Component {...pageProps} />
-      </div>
-    </>
+    <div>
+      <Component {...pageProps} />
+    </div>
   );
 }
 
