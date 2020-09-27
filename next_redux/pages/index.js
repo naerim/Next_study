@@ -1,12 +1,11 @@
 import React from "react";
 import Counting from "./Counting";
-import Layout from "../components/Layout";
 
 const Index = () => {
   return (
-    <Layout>
+    <div>
       <Counting />
-    </Layout>
+    </div>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { increase, decrease } from "../reducers/counter";
+import Layout from "../components/Layout";
 
 const Counting = () => {
   const { countNum } = useSelector((state) => ({
@@ -18,7 +19,7 @@ const Counting = () => {
   const [input, setInput] = useState("");
 
   return (
-      <div>
+      <Layout>
         <h3>Counting Number</h3>
         <h1>{countNum}</h1>
         <input
@@ -28,7 +29,7 @@ const Counting = () => {
         />
         <button onClick={() => onIncrease(Number(input))}>+</button>
         <button onClick={() => onDecrease(Number(input))}>-</button>
-      </div>
+      </Layout>
   );
 };
 
